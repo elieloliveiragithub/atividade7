@@ -2,6 +2,7 @@
 //Eliel Almeida de Oliveira 
 //UNIGRAN - Gerenciamento de Configuração
 //Criado em 25 de Março de 2020
+//Edição A realizada em 27 de Março de 2020
 
 #include <iostream>
 
