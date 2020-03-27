@@ -1,0 +1,77 @@
+//Código para Cálculo do IMC - Índice de Massa Corporal
+//Eliel Almeida de Oliveira 
+//UNIGRAN - Gerenciamento de Configuração
+//Criado em 25 de Março de 2020
+
+#include <iostream>
+
+using namespace std;
+
+
+//Este bool irá retornar verdadeiro se o valor inserido pelo usuário esta entre dois valores
+bool ValorEntre (float valorDeEntrada, float valorMinimo, float valorMaximo){
+    
+	//valor é maior ou igual a "valorMinimo"? Valor é igual ou menor a "valorMaximo"?
+    	if (valorDeEntrada >= valorMinimo && valorDeEntrada <= valorMaximo){
+        return true; //verdadeiro
+    	}
+    	else {
+        return false; //falso
+    	}
+}
+
+//Aqui vamos mostrar para o usuário o IMC com um status.
+void ImprimirEstadoDoIMC (float imcResultado){
+    
+    cout << "\n[ ";
+    if (imcResultado < 17){
+        cout << "Voce esta muito abaixo do IMC recomendado. Consulte um nutricionista";
+    }
+    else if (ValorEntre(imcResultado, 17, 18.49))
+    {
+        cout << "O seu IMC esta baixo. Consulte um nutricionista";
+        
+    }
+    else if (ValorEntre(imcResultado, 18.8, 24.9))
+    {
+        cout << "O seu IMC está dentro de um intervalo ideal. Bom Trabalho!";
+    }
+    else if (ValorEntre(imcResultado, 24.9, 25)) {
+        cout << "O seu IMC indica um sobrepeso. Consulte um nutricionista.";
+    }
+    else if (imcResultado > 25){
+        cout << "O seu IMC esta muito acima do limite aceitavel... Consulte um nutricionista";
+    }
+    cout << " ]" << endl;
+    return;
+}
+
+// Retorne valor total do IMC de acordo com o valor inserido pelo usuário
+float RetornarIMC (float peso, float altura) {
+    return peso / (altura * altura);
+}
+
+// MÉTODO PRINCIPAL
+int main(int argc, char** argv) {
+    
+    float alturaDoUsuario = 0;
+    float pesoDoUsuario = 0;
+    float resultadoIMC = 0;
+    
+    cout << "Insira sua altura em M.cm Ex.: 1.80 \n";
+    cin >> alturaDoUsuario;
+    cout << Insira o seu peso em Kg Ex.: 70 \n";
+    cin >> pesoDoUsuario;
+    
+    //Utilizado para calcular o peso total
+    resultadoIMC = RetornarIMC(pesoDoUsuario, alturaDoUsuario);
+    
+    //Mostra na tela o peso, a altura e o IMC total
+    cout << "Resultado do IMC: " << "\n- Altura :" << alturaDoUsuario << "\n- Peso :" << pesoDoUsuario << 	"\n- IMC Total :" << resultadoIMC << endl;
+    
+    //Mostrar na tela o Status do IMC ao usuário
+    ImprimirEstadoDoIMC(resultadoIMC);
+    
+    //finaliza aplicação
+    return 0;
+}
